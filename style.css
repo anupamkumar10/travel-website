@@ -1,0 +1,527 @@
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+h1, h2, h3, h4 {
+    color: #222;
+}
+
+/* Header Section */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0099cc;
+    padding: 20px 40px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header .logo {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.header .nav a {
+    margin: 0 20px;
+    font-size: 18px;
+    color: white;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+.header .nav a:hover {
+    color: #ff6600;
+}
+
+.header .auth a {
+    margin-left: 20px;
+    font-size: 18px;
+    color: #ff6600;
+}
+
+.header .auth a:hover {
+    color: #ff9933;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url('https://via.placeholder.com/1920x800?text=Travel+Hero');
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    color: white;
+    text-align: center;
+    padding: 40px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.hero .cta {
+    padding: 15px 30px;
+    background-color: #ff6600;
+    border: none;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.hero .cta:hover {
+    background-color: #e65c00;
+}
+
+/* Offers Section */
+.offers {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #f1f1f1;
+}
+
+.offers h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.offers-list {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.offer-item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.offer-item h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #ff6600;
+}
+
+.offer-item p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Destinations Section */
+.destinations {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #fafafa;
+}
+
+.destinations h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: #222;
+}
+
+.destinations-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.destination-item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 280px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.destination-item:hover {
+    transform: scale(1.05);
+}
+
+.destination-item h3 {
+    font-size: 22px;
+    margin: 15px 0;
+    color: #0073e6;
+}
+
+.destination-item p {
+    font-size: 16px;
+    color: #777;
+}
+
+.destination-item button {
+    background-color: #ff6600;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.destination-item button:hover {
+    background-color: #e65c00;
+}
+
+/* Customer Support Section */
+.support {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #0073e6;
+    color: white;
+}
+
+.support h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.support p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.support .cta {
+    padding: 15px 30px;
+    background-color: #ff6600;
+    border: none;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.support .cta:hover {
+    background-color: #e65c00;
+}
+
+/* Extras Section */
+.extras {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.extras h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #222;
+}
+
+.extras-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.extras-item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.extras-item h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #ff6600;
+}
+
+.extras-item button {
+    background-color: #0073e6;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.extras-item button:hover {
+    background-color: #005bb5;
+}
+
+/* Testimonials Section */
+.testimonials {
+    padding: 50px 20px;
+    background-color: #f1f1f1;
+    text-align: center;
+}
+
+.testimonial-list {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.testimonial-item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-item p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.testimonial-item h4 {
+    font-size: 18px;
+    color: #ff6600;
+}
+
+/* FAQ Section */
+.faq {
+    padding: 50px 20px;
+    background-color: #fafafa;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+}
+
+.faq-item h3 {
+    font-size: 22px;
+    color: #0073e6;
+    margin-bottom: 10px;
+}
+
+.faq-item p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Footer Section */
+.footer {
+    background-color: #2b3e50;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.footer-links {
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    margin: 0 15px;
+    font-size: 16px;
+    color: white;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #ff6600;
+}
+
+footer p {
+    font-size: 14px;
+    color: #bbb;
+}
+.hero p {
+    color: black;
+}
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #007BFF;
+    color: #fff;
+}
+
+.header .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.header .nav a {
+    margin-right: 15px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.header .auth a {
+    margin-left: 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 50px 20px;
+    background: url('https://imgs.search.brave.com/T2PqWPvHFXF3mY3geSrt-nE1t80JbsNdBgONBqyBMvo/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzEwLzAzLzU1Lzc3/LzM2MF9GXzEwMDM1/NTc3NjVfVFcxNUxH/UTJWOGgzWDRjRUw0/M0NCSVRkY1AwbjZP/S3EuanBn') no-repeat center/cover;
+    color: #fff;
+    position: relative;
+}
+
+.hero .hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.hero .hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.hero .cta {
+    padding: 10px 20px;
+    background-color: #FF5722;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.search-bar input,
+.search-bar select,
+.search-bar button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.search-bar button {
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Offers Section */
+.offers {
+    padding: 30px 20px;
+    background-color: #f1f1f1;
+    text-align: center;
+}
+
+.offers h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.offers-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.offer-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 250px;
+}
+
+/* Destinations Section */
+.destinations {
+    padding: 30px 20px;
+}
+
+.destinations h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.destinations-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.destination-item {
+    text-align: center;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    width: 300px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.destination-item img {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer-links a {
+    color: #fff;
+    margin-right: 15px;
+    text-decoration: none;
+}

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelNest - Blockchain Payment</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --text-color: #333;
+            --background-color: #f4f6f9;
+            --gradient-start: #6a11cb;
+            --gradient-end: #2575fc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .blockchain-payment-container {
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 850px;
+            padding: 40px;
+            box-sizing: border-box;
+            transition: transform 0.3s ease;
+        }
+
+        .blockchain-payment-container:hover {
+            transform: translateY(-10px);
+        }
+
+        .payment-wrapper h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .trip-details h3 {
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .trip-details p {
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+
+        .crypto-payment-section {
+            margin-bottom: 30px;
+        }
+
+        .crypto-options {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .crypto-btn {
+            display: flex;
+            align-items: center;
+            background-color: #f1f3f5;
+            border: 2px solid #e9ecef;
+            padding: 12px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 30%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        .crypto-btn:hover {
+            background-color: var(--secondary-color);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .crypto-btn img {
+            width: 35px;
+            margin-right: 12px;
+        }
+
+        .wallet-btn, .payment-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        .wallet-btn:hover, .payment-btn:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        .payment-btn:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        .payment-details, .transaction-section {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .payment-details h3, .transaction-section button {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .payment-details .exchange-rates p, .payment-details .conversion-display p {
+            font-size: 18px;
+            color: var(--text-color);
+            margin-top: 10px;
+        }
+
+        .transaction-section {
+            margin-top: 30px;
+        }
+
+        #transaction-status {
+            margin-top: 10px;
+            text-align: center;
+            color: #e74c3c;
+            font-size: 16px;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: 500;
+        }
+
+        /* Add some smooth animations for elements */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fadeIn {
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* Responsive Design for small screens */
+        @media (max-width: 768px) {
+            .crypto-btn {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+
+            .payment-wrapper h2 {
+                font-size: 28px;
+            }
+
+            .payment-details .exchange-rates p, .payment-details .conversion-display p {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .blockchain-payment-container {
+                padding: 20px;
+            }
+
+            .crypto-btn img {
+                width: 30px;
+            }
+
+            .payment-wrapper h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="blockchain-payment-container fadeIn">
+        <div class="payment-wrapper">
+            <h2>Cryptocurrency Payment</h2>
+
+            <div class="trip-details">
+                <h3>Trip Details</h3>
+                <p>Destination: Paris, France</p>
+                <p>Dates: Jan 15 - Jan 22, 2025</p>
+                <p>Total Cost: $1,250</p>
+            </div>
+
+            <div class="crypto-payment-section">
+                <h3 class="section-title">Select Cryptocurrency</h3>
+                <div class="crypto-options">
+                    <button class="crypto-btn" id="bitcoin-pay">
+                        <img src="https://financialtribune.com/sites/default/files/field/image/17january/15_bitcoin_10.jpg" alt="Bitcoin">
+                        Bitcoin (BTC)
+                    </button>
+                    <button class="crypto-btn" id="ethereum-pay">
+                        <img src="https://bitcoinist.com/wp-content/uploads/2018/04/as-ethereum.jpg" alt="Ethereum">
+                        Ethereum (ETH)
+                    </button>
+                    <button class="crypto-btn" id="usdt-pay">
+                        <img src="https://th.bing.com/th/id/OIP.TlJxt36GTnvurWtPgTiUQAHaGg?rs=1&pid=ImgDetMain" alt="Tether">
+                        Tether (USDT)
+                    </button>
+                </div>
+            </div>
+
+            <div class="wallet-connection">
+                <h3 class="section-title">Wallet Connection</h3>
+                <button id="connect-wallet" class="wallet-btn">
+                    Connect Wallet
+                </button>
+                <p id="wallet-status">Status: Not Connected</p>
+            </div>
+
+            <div class="payment-details">
+                <h3>Payment Information</h3>
+                <div class="exchange-rates">
+                    <p>Current BTC Rate: <span id="btc-rate">$0.00</span></p>
+                    <p>Current ETH Rate: <span id="eth-rate">$0.00</span></p>
+                </div>
+                <div class="conversion-display">
+                    <p>Equivalent Crypto Amount: <span id="crypto-amount">0.00</span></p>
+                </div>
+            </div>
+
+            <div class="transaction-section">
+                <button id="complete-payment" class="payment-btn" disabled>
+                    Complete Payment
+                </button>
+                <div id="transaction-status"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class BlockchainPayment {
+            constructor() {
+                this.web3 = null;
+                this.selectedCrypto = null;
+                this.walletAddress = null;
+            }
+
+            async initWeb3() {
+                if (window.ethereum) {
+                    this.web3 = new Web3(window.ethereum);
+                    try {
+                        await window.ethereum.request({ method: 'eth_requestAccounts' });
+                        this.updateWalletStatus(true);
+                    } catch (error) {
+                        console.error("User denied account access");
+                    }
+                } else {
+                    alert("Please install MetaMask!");
+                }
+            }
+
+            updateWalletStatus(connected) {
+                const walletStatus = document.getElementById('wallet-status');
+                const completePaymentBtn = document.getElementById('complete-payment');
+
+                if (connected) {
+                    walletStatus.textContent = Connected: ${this.web3.eth.defaultAccount};
+                    completePaymentBtn.disabled = false;
+                } else {
+                    walletStatus.textContent = "Not Connected";
+                    completePaymentBtn.disabled = true;
+                }
+            }
+
+            async fetchCryptoRates() {
+                try {
+                    const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,tether&vs_currencies=usd');
+                    const rates = await response.json();
+                    
+                    document.getElementById('btc-rate').textContent = $${rates.bitcoin.usd};
+                    document.getElementById('eth-rate').textContent = $${rates.ethereum.usd};
+                } catch (error) {
+                    console.error("Rate fetch failed", error);
+                }
+            }
+
+            async initiateTransaction() {
+                if (!this.web3) {
+                    alert("Please connect wallet first!");
+                    return;
+                }
+
+                const transactionStatus = document.getElementById('transaction-status');
+                
+                try {
+                    const accounts = await this.web3.eth.getAccounts();
+                    const amount = this.web3.utils.toWei('0.01', 'ether');
+                    
+                    const transaction = await this.web3.eth.sendTransaction({
+                        from: accounts[0],
+                        to: '0x1234567890123456789012345678901234567890', // Destination wallet
+                        value: amount
+                    });
+
+                    transactionStatus.textContent = Transaction Successful: ${transaction.transactionHash};
+                    transactionStatus.style.color = 'green';
+                } catch (error) {
+                    transactionStatus.textContent = Transaction Failed: ${error.message};
+                    transactionStatus.style.color = 'red';
+                }
+            }
+
+            bindEvents() {
+                document.getElementById('connect-wallet').addEventListener('click', () => this.initWeb3());
+                
+                document.getElementById('bitcoin-pay').addEventListener('click', () => {
+                    this.selectedCrypto = 'BTC';
+                });
+
+                document.getElementById('ethereum-pay').addEventListener('click', () => {
+                    this.selectedCrypto = 'ETH';
+                });
+
+                document.getElementById('complete-payment').addEventListener('click', () => this.initiateTransaction());
+            }
+
+            init() {
+                this.fetchCryptoRates();
+                this.bindEvents();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const blockchainPayment = new BlockchainPayment();
+            blockchainPayment.init();
+        });
+    </script>
+</body>
+</html>
