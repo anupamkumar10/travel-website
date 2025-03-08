@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Travel Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://png.pngtree.com/back_origin_pic/05/06/89/6e270dec6f11931302918d797f0eef7a.jpg'); /* Set your own background image URL */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+            background-attachment: fixed;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            border-radius: 15px;
+            box-shadow: 0px 15px 45px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 650px;
+            padding: 40px;
+            text-align: center;
+            transform: translateY(0);
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #1d4e89;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .button {
+            background: linear-gradient(45deg, #ff8c00, #e52e71);
+            color: white;
+            padding: 20px 35px;
+            font-size: 1.4rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            margin-top: 30px;
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+            background: linear-gradient(45deg, #e52e71, #ff8c00);
+        }
+
+        .destination, .description {
+            font-size: 1.5rem;
+            color: #444;
+            margin-top: 20px;
+            line-height: 1.5;
+        }
+
+        .destination {
+            font-weight: bold;
+            color: #2a7de1;
+        }
+
+        .description {
+            color: #555;
+        }
+
+        .image-container {
+            margin-top: 25px;
+            transition: transform 0.5s ease;
+        }
+
+        .image-container img {
+            width: 100%;
+            border-radius: 12px;
+            max-height: 350px;
+            object-fit: cover;
+        }
+
+        .footer {
+            margin-top: 50px;
+            font-size: 1.1rem;
+            color: #888;
+            font-weight: 300;
+        }
+
+        /* Hover effect on image */
+        .image-container:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Responsive design for mobile devices */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            .button {
+                font-size: 1.2rem;
+                padding: 15px 30px;
+            }
+            .destination, .description {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Discover a Random Travel Destination</h1>
+        <button class="button" onclick="generateRandomDestination()">Get Random Destination</button>
+
+        <div class="destination" id="destination-name"></div>
+        <div class="description" id="destination-description"></div>
+        <div class="image-container">
+            <img id="destination-image" src="" alt="" style="display: none;">
+        </div>
+
+        <div class="footer">
+            <p>Start your travel journey today with us!</p>
+        </div>
+    </div>
+
+    <script>
+        const destinations = [
+            {
+                name: 'Paris, France',
+                description: 'Experience the magic of the Eiffel Tower, art at the Louvre, and world-class cuisine.',
+                image: 'https://th.bing.com/th/id/OIP.WR_2TA08Ou1GO2MB4iAymAHaEo?w=291&h=182&c=7&r=0&o=5&dpr=1.3&pid=1.7'
+            },
+            {
+                name: 'Tokyo, Japan',
+                description: 'A vibrant city blending traditional temples with futuristic architecture and technology.',
+                image: 'https://th.bing.com/th/id/OIP.oJwIIsJXLC0tGHXsBZUObgHaEK?rs=1&pid=ImgDetMain'
+            },
+            {
+                name: 'Sydney, Australia',
+                description: 'Enjoy stunning beaches, the iconic Sydney Opera House, and incredible outdoor adventures.',
+                image: 'https://www.wallpaperflare.com/static/694/1004/887/skyline-opera-house-harbour-bridge-landscape-wallpaper.jpg'
+            },
+            {
+                name: 'Cape Town, South Africa',
+                description: 'A breathtaking city with stunning views of Table Mountain and beautiful beaches.',
+                image: 'https://lp-cms-production.imgix.net/2019-06/stock-photo-welcome-to-cape-town-104168527.jpg?fit=crop&q=40&sharp=10&vib=20&auto=format&ixlib=react-8.6.4'
+            },
+            {
+                name: 'New York City, USA',
+                description: 'Explore the bustling streets, iconic landmarks, and endless entertainment.',
+                image: 'https://th.bing.com/th/id/R.42b6efd2ca061b7d93de69e3a9d952d2?rik=ryQpq2FNIhq0MQ&riu=http%3a%2f%2fwallup.net%2fwp-content%2fuploads%2f2015%2f12%2f227873-landscape-cityscape-building-sunset-USA-New_York_City.jpg&ehk=q3HFV9W86G37S%2b6845UI8zpfy%2f9Gh%2fifgwrAbJ3Xq6A%3d&risl=1&pid=ImgRaw&r=0'
+            },
+            {
+                name: 'Rio de Janeiro, Brazil',
+                description: 'Famous for its Carnival, Copacabana beach, and the iconic Christ the Redeemer statue.',
+                image: 'https://th.bing.com/th/id/OIP.jcR_hDM2Pk7G62_b4Mll7wHaD5?rs=1&pid=ImgDetMain'
+            },
+            {
+                name: 'Machu Picchu, Peru',
+                description: 'An ancient Inca city set high in the Andes Mountains, rich in history and mystery.',
+                image: 'https://peru-volunteer.com/wp-content/uploads/2019/04/8b34bf3d-cb4d-43fc-8632-d797c2ad19ce.jpeg'
+            }
+        ];
+
+        function generateRandomDestination() {
+            // Get a random index from the destinations array
+            const randomIndex = Math.floor(Math.random() * destinations.length);
+            const randomDestination = destinations[randomIndex];
+
+            // Update the DOM with the destination information
+            document.getElementById('destination-name').textContent = randomDestination.name;
+            document.getElementById('destination-description').textContent = randomDestination.description;
+            
+            const imgElement = document.getElementById('destination-image');
+            imgElement.src = randomDestination.image;
+            imgElement.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

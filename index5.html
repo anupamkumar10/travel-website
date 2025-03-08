@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popular Attractions - TravelNest</title>
+    <style>
+        /* Reset some basic styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and header styles */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #007bff; /* Changed text color to blue */
+            background-color: #f4f4f4;
+        }
+
+        .header {
+            background-color: #007bff; /* Changed background color to blue */
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav a, .auth a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .nav a:hover, .auth a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            background-color: #007bff; /* Blue background */
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .attractions {
+            padding: 40px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .attractions-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .attraction-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 30%;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .attraction-item:hover {
+            transform: scale(1.05);
+        }
+
+        .attraction-item img {
+            width: 100%;
+            height: auto;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .attraction-item h3 {
+            font-size: 1.4em;
+            margin: 10px 0;
+        }
+
+        .attraction-item p {
+            padding: 0 10px;
+            margin-bottom: 10px;
+        }
+
+        /* Flexbox for button alignment */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .attraction-item button {
+            background-color: #007bff; /* Blue color for buttons */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            width: auto; /* Adjusted to make button smaller */
+            box-sizing: border-box; /* Ensures padding and border are included in the width */
+        }
+
+        .attraction-item button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        .footer {
+            background-color: #007bff; /* Blue background */
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        #current-year {
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">TravelNest</div>
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="stays.html">Stays</a>
+            <a href="flights.html">Flights</a>
+            <a href="flight-hotel.html">Flight + Hotel</a>
+            <a href="car-rentals.html">Car Rentals</a>
+            <a href="attractions.html">Attractions</a>
+            <a href="payment.html">Payment</a>
+        </nav>
+        <div class="auth">
+            <a href="register.html">REGISTER</a>
+            <a href="signin.html">SIGN IN</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Popular Attractions Around the World</h1>
+        <p>Explore the most iconic landmarks and attractions worldwide. Plan your next trip to these must-see destinations.</p>
+    </section>
+
+    <section class="attractions">
+        <h2>Explore These Popular Destinations</h2>
+        <div class="attractions-list">
+            <!-- Existing Destinations -->
+            <!-- Paris -->
+            <div class="attraction-item">
+                <img src="https://wallpaperaccess.com/full/1192224.jpg" alt="Paris" />
+                <h3>Paris, France</h3>
+                <p>The city of lights and love. Explore the Eiffel Tower and more.</p>
+                <div class="button-container">
+                    <button>Explore Paris</button>
+                </div>
+            </div>
+
+            <!-- Taj Mahal -->
+            <div class="attraction-item">
+                <img src="https://th.bing.com/th/id/OIP.BhNsMq6jKjRZOPV29PscvgHaEK?rs=1&pid=ImgDetMain" alt="Taj Mahal" />
+                <h3>Taj Mahal, India</h3>
+                <p>A stunning symbol of love and one of the most famous landmarks in the world.</p>
+                <div class="button-container">
+                    <button>Explore Taj Mahal</button>
+                </div>
+            </div>
+
+            <!-- Pyramids of Giza -->
+            <div class="attraction-item">
+                <img src="https://backiee.com/static/wpdb/wallpapers/1000x563/173085.jpg" alt="Pyramids of Giza" />
+                <h3>Pyramids of Giza, Egypt</h3>
+                <p>Witness the ancient wonders of the world, including the Great Pyramid of Giza.</p>
+                <div class="button-container">
+                    <button>Explore Giza Pyramids</button>
+                </div>
+            </div>
+
+            <!-- Colosseum -->
+            <div class="attraction-item">
+                <img src="https://cdn.ecotravellerguide.com/1665995241447.jpg" alt="Colosseum" />
+                <h3>Colosseum, Italy</h3>
+                <p>Step back in time and visit the Roman Colosseum, an iconic symbol of Rome.</p>
+                <div class="button-container">
+                    <button>Explore Colosseum</button>
+                </div>
+            </div>
+
+            <!-- Great Wall of China -->
+            <div class="attraction-item">
+                <img src="https://www.tripsavvy.com/thmb/UC__1dv9YAGw3uaDiAj7gK5MKu8=/5000x3253/filters:fill(auto,1)/great-wall-of-china-5bf5a5e1c9e77c00586cd430.jpg" />
+                <h3>Great Wall of China, China</h3>
+                <p>The world’s longest wall, steeped in history and breathtaking views.</p>
+                <div class="button-container">
+                    <button>Explore Great Wall</button>
+                </div>
+            </div>
+
+            <!-- Christ the Redeemer -->
+            <div class="attraction-item">
+                <img src="https://img1.wsimg.com/isteam/ip/e344a4ba-c70a-4cfe-a8f9-1f762fc0ff06/Beaurtiful-View-Of-The-Christ-The-Redeemer-Sta.jpg" alt="Christ the Redeemer" />
+                <h3>Christ the Redeemer, Brazil</h3>
+                <p>One of the seven new wonders of the world, with panoramic views of Rio de Janeiro.</p>
+                <div class="button-container">
+                    <button>Explore Christ the Redeemer</button>
+                </div>
+            </div>
+
+            <!-- Grand Canyon -->
+            <div class="attraction-item">
+                <img src="https://www.tripsavvy.com/thmb/bXi4l7LgQmL-g4mdMSQx_tP90aw=/5260x3500/filters:fill(auto,1)/canyon-and-river-at-sunset---toroweap-overlook--grand-canyon--arizona--152836923-5a21d2c7aad52b0037fa48b1.jpg" alt="Grand Canyon" />
+                <h3>Grand Canyon, USA</h3>
+                <p>Marvel at the majestic landscape of this world-famous natural wonder.</p>
+                <div class="button-container">
+                    <button>Explore Grand Canyon</button>
+                </div>
+            </div>
+
+            <!-- Statue of Liberty -->
+            <div class="attraction-item">
+                <img src="https://www.travelthefoodforthesoul.com/wp-content/uploads/2020/05/The-Ultimate-Guide-To-Statue-of-Liberty.jpg" alt="Statue of Liberty" />
+                <h3>Statue of Liberty, USA</h3>
+                <p>A symbol of freedom and democracy, located in New York Harbor.</p>
+                <div class="button-container">
+                    <button>Explore Statue of Liberty</button>
+                </div>
+            </div>
+
+            <!-- Stonehenge -->
+            <div class="attraction-item">
+                <img src="https://th.bing.com/th/id/OIP.5sC04pm6K07UzzMTCYVgvQAAAA?rs=1&pid=ImgDetMain" alt="Stonehenge" />
+                <h3>Stonehenge, UK</h3>
+                <p>One of the most famous prehistoric monuments in the world.</p>
+                <div class="button-container">
+                    <button>Explore Stonehenge</button>
+                </div>
+            </div>
+
+            <!-- Mount Kilimanjaro -->
+            <div class="attraction-item">
+                <img src="https://i.redd.it/yzyvfqln48x61.jpg" alt="Mount Kilimanjaro" />
+                <h3>Mount Kilimanjaro, Tanzania</h3>
+                <p>Climb the tallest mountain in Africa and witness breathtaking views.</p>
+                <div class="button-container">
+                    <button>Explore Kilimanjaro</button>
+                </div>
+            </div>
+
+            <!-- Petra -->
+            <div class="attraction-item">
+                <img src="https://th.bing.com/th/id/OIP.lU3bXLBwIFMIBudMNDIo9AHaE-?rs=1&pid=ImgDetMain" alt="Petra" />
+                <h3>Petra, Jordan</h3>
+                <p>Discover the ancient city carved into red sandstone cliffs.</p>
+                <div class="button-container">
+                    <button>Explore Petra</button>
+                </div>
+            </div>
+
+            <!-- Angkor Wat -->
+            <div class="attraction-item">
+                <img src="https://www.tripsavvy.com/thmb/74SaLzydFMxwf_uDPZn6TFuRERM=/4856x3237/filters:no_upscale():max_bytes(150000):strip_icc()/sunset-at-angkor-wat--siem-reap--cambodia-640432454-5c327edf46e0fb00016ccb6c.jpg" alt="Angkor Wat" />
+                <h3>Angkor Wat, Cambodia</h3>
+                <p>The largest religious monument in the world, showcasing Khmer architecture.</p>
+                <div class="button-container">
+                    <button>Explore Angkor Wat</button>
+                </div>
+            </div>
+
+            <!-- New Destinations -->
+
+            <!-- Santorini -->
+            <div class="attraction-item">
+                <img src="https://th.bing.com/th/id/R.236e7629e4430386687fcbfd1d1a7dff?rik=k%2f28h%2fRDYppiYA&riu=http%3a%2f%2fwww.greekboston.com%2fwp-content%2fuploads%2f2016%2f10%2fSantorini.jpg&ehk=P%2bTly70BJd8KLSob54r7hKmII77lfJunk8OqJCwAgVw%3d&risl=&pid=ImgRaw&r=0" alt="Santorini, Greece" />
+                <h3>santorini, Greece</h3>
+                <p>Stunning views, sunsets, and charming villages.</p>
+                <div class="button-container">
+                    <button>Explore Santorini</button>
+                </div>
+            </div>
+
+            <!-- Mount Fuji -->
+            <div class="attraction-item">
+                <img src="https://japanese.mythologyworldwide.com/wp-content/uploads/2025/03/japanese.mythologyworldwide.com-Mount-Fuji-and-Beyond-The-Sacred-Mountains-of-Japan.webp" alt="Mount Fuji, Japan" />
+                <h3>Mount Fuji, Japan</h3>
+                <p>One of Japan's most iconic and sacred mountains.</p>
+                <div class="button-container">
+                    <button>Explore Mount Fuji</button>
+                </div>
+            </div>
+
+            <!-- Sydney Opera House -->
+            <div class="attraction-item">
+                <img src="https://www.tripsavvy.com/thmb/V6JxfYqOrA268Li6fra_jSlkcCA=/2121x1414/filters:fill(auto,1)/OperaHouse-755d893182dc4811b608eb1a99792fd7.jpg" alt="Sydney Opera House" />
+                <h3>Sydney Opera House, Australia</h3>
+                <p>A world-renowned cultural venue with striking architecture.</p>
+                <div class="button-container">
+                    <button>Explore Sydney Opera House</button>
+                </div>
+            </div>
+
+            <!-- Acropolis of Athens -->
+            <div class="attraction-item">
+                <img src="https://th.bing.com/th/id/OIP.DuNJFYCDgUsQ_32sS-WEbAHaEK?rs=1&pid=ImgDetMain" alt="Acropolis of Athens, Greece" />
+                <h3>Acropolis of Athens, Greece</h3>
+                <p>An ancient site with magnificent ruins, including the Parthenon.</p>
+                <div class="button-container">
+                    <button>Explore Acropolis of Athens</button>
+                </div>
+            </div>
+
+            <!-- Banff National Park -->
+            <div class="attraction-item">
+                <img src="https://cdn.britannica.com/89/104889-050-A3D26337/Moraine-Lake-Banff-National-Park.jpg" alt="Banff National Park" />
+                <h3>Banff National Park, Canada</h3>
+                <p>Stunning alpine scenery, turquoise lakes, and majestic mountains.</p>
+                <div class="button-container">
+                    <button>Explore Banff National Park</button>
+                </div>
+            </div>
+
+            <!-- Louvre Museum -->
+            <div class="attraction-item">
+                <img src="https://th.bing.com/th/id/OIP.FBGPl7tq4kXnnLAED4s9AQHaEK?rs=1&pid=ImgDetMain" alt="Louvre Museum, France" />
+                <h3>Louvre Museum, France</h3>
+                <p>Home to the Mona Lisa and other world-renowned art.</p>
+                <div class="button-container">
+                    <button>Explore Louvre Museum</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+        </div>
+        <p>&copy; <span id="current-year"></span> TravelNest - All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Set the current year in the footer dynamically
+        document.getElementById("current-year").textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking</title>
+    <style>
+        /* styles.css */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://wallpaperaccess.com/full/1470825.jpg'); /* Background image for the whole page */
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.7); /* Transparent background for better readability */
+            border-radius: 10px;
+            background-image: url(''); /* Background image for the container */
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 30px;
+            font-size: 36px;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        input[type="text"], input[type="date"], input[type="number"], select {
+            width: 180px;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            background-color: #fff;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"]:focus, input[type="date"]:focus, select:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .form-group select {
+            width: 160px;
+        }
+
+        button.submit-btn {
+            width: 200px;
+            padding: 15px;
+            background-color: #007bff;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 20px auto;
+            display: block;
+        }
+
+        button.submit-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .suggestions {
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            margin-top: 5px;
+            padding: 10px;
+            position: absolute;
+            width: 180px;
+            box-sizing: border-box;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .suggestions div {
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .suggestions div:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #bookingConfirmation {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        #bookingConfirmation button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+        }
+
+        #bookingConfirmation button:hover {
+            background-color: #218838;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 14px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Book Your Flight</h1>
+        <form id="flightBookingForm">
+            <div class="form-group">
+                <div>
+                    <label for="departure">From:</label>
+                    <input type="text" id="departure" name="departure" placeholder="Enter departure city" required>
+                    <div id="departureSuggestions" class="suggestions hidden"></div>
+                </div>
+
+                <div>
+                    <label for="destination">To:</label>
+                    <input type="text" id="destination" name="destination" placeholder="Enter destination city" required>
+                    <div id="destinationSuggestions" class="suggestions hidden"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div>
+                    <label for="departureDate">Departure Date:</label>
+                    <input type="date" id="departureDate" name="departureDate" required>
+                </div>
+
+                <div>
+                    <label for="returnDate">Return Date (optional):</label>
+                    <input type="date" id="returnDate" name="returnDate">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div>
+                    <label for="passengers">Number of Passengers:</label>
+                    <input type="number" id="passengers" name="passengers" min="1" max="10" required>
+                </div>
+
+                <div>
+                    <label for="class">Class:</label>
+                    <select id="class" name="class" required>
+                        <option value="economy">Economy</option>
+                        <option value="business">Business</option>
+                        <option value="first-class">First Class</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Search Flights</button>
+        </form>
+
+        <div id="bookingConfirmation" class="hidden">
+            <h2>Booking Summary</h2>
+            <p id="summary"></p>
+            <button onclick="clearForm()">Start New Search</button>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2025 Travel Booking. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        // script.js
+
+        document.getElementById("flightBookingForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get form values
+            const departure = document.getElementById("departure").value;
+            const destination = document.getElementById("destination").value;
+            const departureDate = document.getElementById("departureDate").value;
+            const returnDate = document.getElementById("returnDate").value;
+            const passengers = document.getElementById("passengers").value;
+            const classType = document.getElementById("class").value;
+
+            // Display booking summary
+            const summary = `
+                <strong>From:</strong> ${departure} <br>
+                <strong>To:</strong> ${destination} <br>
+                <strong>Departure Date:</strong> ${departureDate} <br>
+                <strong>Return Date:</strong> ${returnDate || 'N/A'} <br>
+                <strong>Passengers:</strong> ${passengers} <br>
+                <strong>Class:</strong> ${classType}
+            `;
+            
+            // Show confirmation
+            document.getElementById("bookingConfirmation").classList.remove("hidden");
+            document.getElementById("summary").innerHTML = summary;
+
+            // Hide the form
+            document.getElementById("flightBookingForm").reset();
+            document.getElementById("flightBookingForm").style.display = 'none';
+        });
+
+        function clearForm() {
+            // Reset form and show the original form again
+            document.getElementById("flightBookingForm").style.display = 'block';
+            document.getElementById("bookingConfirmation").classList.add("hidden");
+        }
+
+        // Dynamic suggestions for departure and destination
+        const cities = ["New York", "Los Angeles", "Chicago", "London", "Paris", "Tokyo", "Dubai", "Sydney", "Berlin", "Mumbai"];
+
+        document.getElementById("departure").addEventListener("input", function() {
+            showSuggestions("departure", this.value);
+        });
+
+        document.getElementById("destination").addEventListener("input", function() {
+            showSuggestions("destination", this.value);
+        });
+
+        function showSuggestions(type, query) {
+            const suggestions = document.getElementById(`${type}Suggestions`);
+            suggestions.innerHTML = ''; // Clear previous suggestions
+            if (!query) {
+                suggestions.classList.add("hidden");
+                return;
+            }
+
+            const filteredCities = cities.filter(city => city.toLowerCase().includes(query.toLowerCase()));
+            if (filteredCities.length > 0) {
+                suggestions.classList.remove("hidden");
+                filteredCities.forEach(city => {
+                    const div = document.createElement("div");
+                    div.textContent = city;
+                    div.onclick = () => {
+                        document.getElementById(type).value = city;
+                        suggestions.classList.add("hidden");
+                    };
+                    suggestions.appendChild(div);
+                });
+            } else {
+                suggestions.classList.add("hidden");
+            }
+        }
+    </script>
+</body>
+</html>

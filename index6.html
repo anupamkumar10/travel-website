@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rentals - TravelNest</title>
+    <style>
+        /* Reset some basic styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and header styles */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #007bff; /* Blue text color */
+            background-color: #f4f4f4;
+        }
+
+        .header {
+            background-color: #007bff; /* Blue background */
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav a, .auth a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .nav a:hover, .auth a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            background-color: #007bff; /* Blue background */
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .car-rentals {
+            padding: 40px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .car-rentals-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .car-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 30%;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .car-item:hover {
+            transform: scale(1.05);
+        }
+
+        .car-item img {
+            width: 100%;
+            height: auto;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .car-item h3 {
+            font-size: 1.4em;
+            margin: 10px 0;
+        }
+
+        .car-item p {
+            padding: 0 10px;
+            margin-bottom: 10px;
+        }
+
+        /* Button styling */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .car-item button {
+            background-color: #007bff; /* Blue button */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            width: auto;
+            box-sizing: border-box;
+        }
+
+        .car-item button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        .footer {
+            background-color: #007bff; /* Blue background */
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        #current-year {
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">TravelNest</div>
+        <nav class="nav">
+            <a href="index.html">Home</a>
+            <a href="stays.html">Stays</a>
+            <a href="flights.html">Flights</a>
+            <a href="flight-hotel.html">Flight + Hotel</a>
+            <a href="car-rentals.html">Car Rentals</a>
+            <a href="attractions.html">Attractions</a>
+            <a href="payment.html">Payment</a>
+        </nav>
+        <div class="auth">
+            <a href="register.html">REGISTER</a>
+            <a href="signin.html">SIGN IN</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Find Your Perfect Car Rental</h1>
+        <p>Choose from a variety of vehicles and enjoy your trip with comfort and style.</p>
+    </section>
+
+    <section class="car-rentals">
+        <h2>Available Car Types for Rent</h2>
+        <div class="car-rentals-list">
+            <!-- SUV -->
+            <div class="car-item">
+                <img src="https://cdn.jdpower.com/JDP_2024%20Mercedes-AMG%20EQE%2053%204Maticplus%20SUV%20Front%20Quarter%20View.jpg" alt="SUV" />
+                <h3>SUV</h3>
+                <p>Spacious and comfortable for family trips or off-road adventures.</p>
+                <div class="button-container">
+                    <button>Rent SUV</button>
+                </div>
+            </div>
+
+            <!-- Sedan -->
+            <div class="car-item">
+                <img src="https://www.car-revs-daily.com/wp-content/uploads/2015/10/16_Civic_Sedan_149.jpg" alt="Sedan" />
+                <h3>Sedan</h3>
+                <p>Perfect for city drives and smooth highways with excellent fuel efficiency.</p>
+                <div class="button-container">
+                    <button>Rent Sedan</button>
+                </div>
+            </div>
+
+            <!-- Hatchback -->
+            <div class="car-item">
+                <img src="https://th.bing.com/th/id/OIP.OLisn9u5chZpQIuQqVDbogHaE6?rs=1&pid=ImgDetMain" alt="Hatchback" />
+                <h3>Hatchback</h3>
+                <p>Compact and easy to maneuver in busy city traffic.</p>
+                <div class="button-container">
+                    <button>Rent Hatchback</button>
+                </div>
+            </div>
+
+            <!-- Convertible -->
+            <div class="car-item">
+                <img src="https://th.bing.com/th/id/OIP.t1qTR8G-ZmUGO2w7dv1IWwHaFO?rs=1&pid=ImgDetMain" alt="Convertible" />
+                <h3>Convertible</h3>
+                <p>For those who want to enjoy the open air during their drive.</p>
+                <div class="button-container">
+                    <button>Rent Convertible</button>
+                </div>
+            </div>
+
+            <!-- Luxury Car -->
+            <div class="car-item">
+                <img src="https://media.wired.com/photos/595480998e8cc150fa8ec1b6/191:100/pass/2-Front-Three-Quarter-Static-1.jpg" alt="Luxury Car" />
+                <h3>Luxury Car</h3>
+                <p>Drive in style and comfort with premium cars for a luxurious experience.</p>
+                <div class="button-container">
+                    <button>Rent Luxury Car</button>
+                </div>
+            </div>
+
+            <!-- Minivan -->
+            <div class="car-item">
+                <img src="https://th.bing.com/th/id/OIP.D53IPDu9SyEheEV9iP_KNAHaE7?rs=1&pid=ImgDetMain" alt="Minivan" />
+                <h3>Minivan</h3>
+                <p>Perfect for family vacations or group travel with plenty of space.</p>
+                <div class="button-container">
+                    <button>Rent Minivan</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+        </div>
+        <p>&copy; <span id="current-year"></span> TravelNest - All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Set the current year in the footer dynamically
+        document.getElementById("current-year").textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://images.pexels.com/photos/4223678/pexels-photo-4223678.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'); /* Background image */
+            background-size: cover;
+            background-position: center;
+            height: 100%;
+            color: #fff;
+        }
+
+        .header {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-size: 30px;
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        label {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        input, select {
+            padding: 12px;
+            border-radius: 5px;
+            border: 2px solid #ddd;
+            width: 230px;
+            font-size: 16px;
+        }
+
+        input[type="date"]:focus, input[type="text"]:focus, select:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        button.submit-btn {
+            width: 250px;
+            padding: 15px;
+            background-color: #28a745;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 20px auto;
+            display: block;
+        }
+
+        button.submit-btn:hover {
+            background-color: #218838;
+        }
+
+        .hotel-info {
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .hotel-card {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            width: 30%;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .hotel-card:hover {
+            transform: scale(1.05);
+        }
+
+        .hotel-card img {
+            width: 100%;
+            border-radius: 6px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .hotel-card h3 {
+            margin-top: 15px;
+            font-size: 24px;
+        }
+
+        .hotel-card p {
+            font-size: 14px;
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .hotel-card .price {
+            font-size: 18px;
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        /* Responsive Layout */
+        @media (max-width: 768px) {
+            .hotel-card {
+                width: 48%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hotel-card {
+                width: 100%;
+            }
+
+            .submit-btn {
+                width: 100%;
+            }
+        }
+
+        /* Scrolling */
+        .hotel-info-wrapper {
+            overflow-y: auto;
+            height: 60vh;
+            padding: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header">
+        <h1>Hotel Booking</h1>
+    </div>
+
+    <!-- Search Form Section -->
+    <div class="form-container">
+        <h1>Find Your Perfect Stay</h1>
+        <form id="hotelBookingForm">
+            <div class="form-group">
+                <div>
+                    <label for="location">Location:</label>
+                    <input type="text" id="location" name="location" placeholder="Enter location" required>
+                </div>
+
+                <div>
+                    <label for="checkIn">Check-in Date:</label>
+                    <input type="date" id="checkIn" name="checkIn" required>
+                </div>
+
+                <div>
+                    <label for="checkOut">Check-out Date:</label>
+                    <input type="date" id="checkOut" name="checkOut" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div>
+                    <label for="guests">Guests:</label>
+                    <select id="guests" name="guests" required>
+                        <option value="1">1 Guest</option>
+                        <option value="2">2 Guests</option>
+                        <option value="3">3 Guests</option>
+                        <option value="4">4 Guests</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="roomType">Room Type:</label>
+                    <select id="roomType" name="roomType" required>
+                        <option value="single">Single</option>
+                        <option value="double">Double</option>
+                        <option value="suite">Suite</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Search Hotels</button>
+        </form>
+    </div>
+
+    <!-- Hotel Cards Section -->
+    <div class="hotel-info-wrapper">
+        <div class="hotel-info">
+            <!-- Hotel 1 -->
+            <div class="hotel-card">
+                <img src="https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/202411172029413319-d3ded2fe-ba54-44f0-b099-5926d7ea2a32.jpg" alt="Hotel 1">
+                <h3>Luxury Hotel</h3>
+                <p>Enjoy a 5-star stay with luxurious amenities and impeccable service.</p>
+                <p class="price">800 per night</p>
+            </div>
+
+            <!-- Hotel 2 -->
+            <div class="hotel-card">
+                <img src="https://r1imghtlak.mmtcdn.com/ca736265-5c9c-4e4f-9764-6151232ab927.jpeg?&output-quality=75&downsize=520:350&crop=520:350;2,0&output-format=jpg&downsize=480:336&crop=480:336" alt="Hotel 2">
+                <h3>Beachfront Resort</h3>
+                <p>Relax by the beach with stunning views and great facilities.</p>
+                <p class="price">1000 per night</p>
+            </div>
+
+            <!-- Hotel 3 -->
+            <div class="hotel-card">
+                <img src="https://ik.imagekit.io/tvlk/apr-asset/TzEv3ZUmG4-4Dz22hvmO9NUDzw1DGCIdWl4oPtKumOg=/lodging/110000000/109680000/109673200/109673157/3d77b1d4_z.jpg?_src=imagekit&tr=dpr-3" alt="Hotel 3">
+                <h3>Mountain Retreat</h3>
+                <p>Escape to the mountains for a peaceful and relaxing experience.</p>
+                <p class="price">1200 per night</p>
+            </div>
+
+            <!-- Hotel 4 -->
+            <div class="hotel-card">
+                <img src="https://r1imghtlak.mmtcdn.com/6652ec94-d7f4-41bf-bf5a-6a4c1cd10a08.jpg" alt="Hotel 4">
+                <h3>City View Hotel</h3>
+                <p>Stay in the heart of the city with excellent views and great location.</p>
+                <p class="price">1500 per night</p>
+            </div>
+
+            <!-- Hotel 5 -->
+            <div class="hotel-card">
+                <img src="https://th.bing.com/th/id/OIF.Qf3yJn0g6T7hLI8Quolniw?rs=1&pid=ImgDetMain" alt="Hotel 5">
+                <h3>Cozy Inn</h3>
+                <p>A charming inn with a cozy atmosphere and friendly service.</p>
+                <p class="price">700 per night</p>
+            </div>
+
+            <!-- Hotel 6 -->
+            <div class="hotel-card">
+                <img src="https://www.amritara.co.in/uploads/gallery/62c52f4d490c7Dine-01.jpg" alt="Hotel 6">
+                <h3>Oceanfront Villa</h3>
+                <p>Enjoy a stay with spectacular ocean views and private beach access.</p>
+                <p class="price">1400 per night</p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Hotel Booking Form Submission
+        document.getElementById("hotelBookingForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const location = document.getElementById("location").value;
+            const checkIn = document.getElementById("checkIn").value;
+            const checkOut = document.getElementById("checkOut").value;
+            const guests = document.getElementById("guests").value;
+            const roomType = document.getElementById("roomType").value;
+
+            alert(`Searching for hotels in ${location} from ${checkIn} to ${checkOut} for ${guests} guest(s) in a ${roomType} room.`);
+            // Here you can replace the alert with actual search logic, like fetching hotel data from a database.
+        });
+    </script>
+</body>
+</html>
